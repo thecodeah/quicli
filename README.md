@@ -14,12 +14,12 @@
 3. Run your CLI with `node myapp mycommand`.
 
 ### With a package manager:
-1. Run `npm install --save quicli`
+1. Run `npm install --save quicli-js`
 2. Import QuiCLI:
 ```js
-import { cli, $ } from "quicli";
+import { cli, $ } from "quicli-js";
 // or
-const { cli, $ } = require("quicli");
+const { cli, $ } = require("quicli-js");
 ```
 3. Add some commands (Check the examples below)
 4. Run your CLI with `node myapp mycommand`

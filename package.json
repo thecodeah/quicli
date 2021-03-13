@@ -1,5 +1,5 @@
 {
-  "name": "quicli",
+  "name": "quicli-js",
   "version": "0.1.0-alpha",
   "description": "Create CLI's quickly with NodeJS and nothing else!",
   "main": "./out/quicli.npm.js",
