@@ -1,5 +1,6 @@
 ![quicli-readme-header](https://user-images.githubusercontent.com/21268739/110963507-6df10100-8352-11eb-8a66-b3370fc9ef07.png)
 ---
+**DISCLAIMER: THIS PROJECT IS IN IT'S ALPHA/EXPLORATORY PHASE. UPDATES MAY INCLUDE DRASTIC API CHANGES.**
 ### Why QuiCLI?
 
  * **Quick:** Get a working CLI ready within seconds!
