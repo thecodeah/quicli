@@ -1,23 +1,49 @@
-interface Command {
+// FlagTypes is a union of flag value types.
+type FlagTypes = string | boolean | number;
+type FlagTypeNames = "string" | "boolean" | "number";
+
+// CommandFlags contain details about a flag that belongs to a command.
+interface CommandFlag {
     name: string;
-    arguments: Array<string>;
-    callback: (...args: any[]) => void;
+    type?: FlagTypeNames;
 }
 
-var registeredCommands: Array<Command> = [];
+// ProvidedFlag is a flag provided by the user.
+interface ProvidedFlag {
+    name: string;
+    values: Array<FlagTypes>;
+}
 
-const addCommand = (name: Command["name"], callback: Command["callback"]) => {
-    // Get the arguments of the provided callback function.
-    let callbackArguments: Array<string> = [];
-    const argumentSections = callback.toString().match(/\((.*)\)/g);
-    if (argumentSections !== null) {
-        callbackArguments = argumentSections[0].slice(1, -1).replace(/ /g, '').split(",");
+// Props are passed to a commands callback function as a parameter.
+type Props = { [key: string]: ProvidedFlag["values"] };
+
+class Command {
+    readonly path: string;
+    readonly callback: (flags: Props) => void;
+    private flags: Array<CommandFlag> = [];
+
+    constructor(path: Command["path"], callback: Command["callback"]) {
+        this.path = path;
+        this.callback = callback;
     }
 
-    // Add the command to the registered command pool.
-    registeredCommands.push({
-        name: name,
-        arguments: callbackArguments,
-        callback: callback
-    });
+    getFlags() {
+        return this.flags;
+    }
+
+    public addFlag(name: string, type?: FlagTypeNames): this {
+        this.flags.push({
+            name: name,
+            type: type
+        })
+        return this;
+    }
+}
+
+var commandPool: Array<Command> = [];
+
+const addCommand = (path: Command["path"], callback: Command["callback"]): Command => {
+    const command = new Command(path, callback);
+    commandPool.push(command);
+    return command;
 };

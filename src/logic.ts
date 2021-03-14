@@ -1,79 +1,100 @@
-interface ProvidedFlag {
-    name: string;
-    values: Array<string | number>;
+interface Arguments {
+    commands: Array<string>;
+    flags: Array<ProvidedFlag>;
 }
 
-const ready = () => {
+const parseArgs = (): Arguments => {
     const args = process.argv.slice(2);
 
-    // Collecting the commands and flags that were provided by the user.
-    let commandsProvided: Array<string> = [];
-    let flagsProvided: Array<ProvidedFlag> = [];
+    let providedCommands: Arguments["commands"] = [];
+    let providedFlags: Arguments["flags"] = [];
+
     args.forEach((arg) => {
         if (arg.startsWith("-")) {
             if (arg.startsWith("--")) {
                 // It's a multi-character flag.
-                flagsProvided.push({
+                providedFlags.push({
                     name: arg.slice(2),
                     values: []
                 });
             } else {
                 // It's a single-character flag.
                 arg.slice(1).split("").forEach((singleCharFlag) => {
-                    flagsProvided.push({
+                    providedFlags.push({
                         name: singleCharFlag,
                         values: []
                     });
                 });
             }
         } else {
-            if (flagsProvided.length > 0) {
+            if (providedFlags.length > 0) {
                 // It's a flag value
                 let parsedValue: any;
                 if (arg.match(/[0-9]+/)) {
                     // It's a number
                     parsedValue = Number(arg);
+                } else if(arg === "true" || arg === "false") {
+                    // It's a boolean
+                    parsedValue = Boolean(arg);
                 } else {
                     // It's a string
                     parsedValue = arg;
                 }
 
-                flagsProvided[flagsProvided.length - 1].values.push(parsedValue);
+                providedFlags[providedFlags.length - 1].values.push(parsedValue);
             } else {
                 // It's a command
-                commandsProvided.push(arg);
+                providedCommands.push(arg);
             }
         }
     });
 
-    // Command handling
-    const providedCommandName = commandsProvided.join(".");
-    if (providedCommandName !== "") {
-        const matchingCommand = registeredCommands.find((cmd) => cmd.name === providedCommandName);
+    return {
+        commands: providedCommands,
+        flags: providedFlags
+    }
+}
+
+const callCommand = (args: Arguments) => {
+    const commandPath = args.commands.join(".");
+    if (commandPath !== "") {
+        const matchingCommand = commandPool.find((cmd) => cmd.path === commandPath);
         if (matchingCommand !== undefined) {
             // Flag handling
-            if (matchingCommand.arguments[0].startsWith("...")) {
-                matchingCommand.callback(...flagsProvided);
-            } else {
-                const callbackArgs = matchingCommand.arguments.map((commandArgument) => {
-                    const matchingFlag = flagsProvided.find((f) => f.name === commandArgument);
-                    if (matchingFlag !== undefined) {
-                        return matchingFlag.values;
-                    } else {
-                        return undefined;
+            let flags: Props = {};
+            args.flags.forEach((flag) => {
+                const matchingFlag = matchingCommand.getFlags().find((f) => f.name === flag.name || f.name === "*");
+                if(matchingFlag !== undefined) {
+                    // Type checking
+                    let valid = true;
+                    if(matchingFlag.type !== undefined) {
+                        if(flag.values.length === 0) {
+                            valid = false;
+                            cli.log($.RED, "Expected value: ", $.CLEAR, flag.name, " expects a ", matchingFlag.type, "!");
+                        } else {
+                            flag.values.forEach((value) => {
+                                if(typeof value !== matchingFlag.type) {
+                                    valid = false;
+                                    cli.log($.RED, "Incorrect type: ", $.CLEAR, flag.name, " must be a ", matchingFlag.type, "!");
+                                }
+                            })   
+                        }
                     }
-                });
-
-                flagsProvided.forEach((f) => {
-                    if (!matchingCommand.arguments.includes(f.name)) {
-                        cli.log($.RED, "Unexpected flag: ", $.CLEAR, f.name);
+                    if(valid) {
+                        if(flags[flag.name] !== undefined) {
+                            flags[flag.name].push(...flag.values);
+                        } else {
+                            flags[flag.name] = flag.values;
+                        }
                     }
-                });
+                } else {
+                    cli.log($.RED, "Unexpected flag: ", $.CLEAR, flag.name);
+                }
+            })
 
-                matchingCommand.callback(...callbackArgs);
-            }
+            matchingCommand.callback(flags);
         } else {
-            cli.log($.RED + "Unknown command: " + $.CLEAR + commandsProvided.join(" -> "));
+            cli.log($.RED + "Unknown command: " + $.CLEAR + args.commands.join(" -> "));
         }
     }
-};
+}
