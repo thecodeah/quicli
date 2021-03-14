@@ -5,8 +5,8 @@ const minify = require('minify');
 
 const startingTime = Date.now();
 const config = {
-    srcDir: "./src/",
-    outFile: "./out/quicli.min.js"
+    srcDir: "src",
+    outFile: "out/quicli.min.js"
 };
 
 var packageJson = {};
@@ -15,7 +15,7 @@ var globals = [];
 
 // Loading data from npm's package.json file and setting it to the global packageJson variable.
 if (fs.existsSync("./package.json")) {
-    packageJson = require("./package.json");
+    packageJson = require("../package.json");
 
     const requiredKeys = ["version", "main"];
     let missingFields = [];
