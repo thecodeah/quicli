@@ -27,7 +27,7 @@ global: const $ = {
     // CLEAR has to come last. Whenever a run-time error occurs, it'll print all the
     // code of the line where the error occurred. In case of QuiCLI, all of the code
     // is minified into one line. Because of that, these text decoration values will
-    // also be prined. We want to make sure that the last instruction it prints is
+    // also be printed. We want to make sure that the last instruction it prints is
     // CLEAR in order to keep the error message and stack unaffected.
     CLEAR: "\x1b[0m"
 };
