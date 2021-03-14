@@ -1,4 +1,4 @@
-![quicli-readme-header](https://user-images.githubusercontent.com/21268739/110963507-6df10100-8352-11eb-8a66-b3370fc9ef07.png)
+![quicli-readme-header](https://user-images.githubusercontent.com/21268739/111079766-b566c100-84fb-11eb-9e49-2f5192741a06.png)
 ---
 **DISCLAIMER: THIS PROJECT IS IN IT'S ALPHA/EXPLORATORY PHASE. UPDATES MAY INCLUDE DRASTIC API CHANGES.**
 ### Why QuiCLI?
