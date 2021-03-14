@@ -27,18 +27,13 @@ If a commit does not follow this format, then it won't get added to the change l
 
 # Versioning
 This project follows the Semantic Versioning Specification (Semver). A quick overview of Semver is:
- - Syntax: `MAJOR.MINOR.PATCH` (With the possibility of tags Ex. `-alpha`)
+ - Syntax: `MAJOR.MINOR.PATCH`
  - Major version MUST be incremented if any backwards incompatible changes are introduced to the public API.
  - Minor version MUST be incremented if new, backwards compatible functionality is introduced to the public API.
  - Patch version MUST be incremented if only backwards compatible bug fixes are introduced.
  - When incrementing the major version: the minor and patch are reset to 0.
  - When incrementing the minor version: the patch is reset to 0.
  - Anything >= 1.0.0 is ready for production.
-
-About Alpha and Beta:
- - Alpha means that the project is still in its exploratory phase. May include drastic API changes.
- - Beta means the project is close to being ready-to-use in production. Features are being polished and ensured to work as expected.
- - Beta's and Alpha's always stay below 1.0.0. Even when introducing backwards incompatible changes, you increment the minor version.
 
 # Labels
 When going through the source code, you'll stumble across some unique syntax. Because this project uses a custom build-tool, it can interpret these labels and manipulate the code before handing it over to the Typescript transpiler.
