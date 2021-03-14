@@ -1,7 +1,32 @@
+# Definitions
+ - Production - refers to any code in the `./src/*` directory, this code will eventually be compiled and provided to the end-user.
+ - Development - refers to files that are not provided to the end-user (Eg. files that are used to assist the development process.)
+
 # Rules
- 1. When adding new functions, keep them in the `cli` namespace.
- 2. When modifying non-development code (`./src/*`) you can only import libraries that are provided by NodeJS by default. (Such as `fs`, `path`).
- 3. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
+ 1. Before committing, make sure you build the project!
+ 2. Before making a pull request, make sure you run `changelog generate`!
+ 3. When adding new functions, keep them in the `cli` namespace.
+ 4. When modifying production code you can only import libraries that are provided by NodeJS by default (Such as `fs`, `path`).
+ 5. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
+
+# Commit Message Format
+This project uses `generate-changelog` to generate a `CHANGELOG.md` file. Because of this, commit messages need to follow a specific format:
+```
+type(category): description
+```
+ - type:
+   - `breaking` - A change that breaks backwards-compatability **(Production)**
+   - `feat` - New feature **(Production)**
+   - `fix` - Bug fix **(Production)**
+   - `refactor` - Refactoring code, eg. renaming a variable **(Production)**
+   - `docs` - Documentation changes - Both in-code and out-of-code (Like `README.md`) **(All files)**
+   - `chore` - Changes related to: the build system (involving scripts, configurations or tools) and dev dependencies **(Development)**
+   - `test` - Adding new tests, changes to tests **(Development)**
+   - `other` - Anything else...
+ - category:
+   - `prod` for changes to the production code.
+   - `dev` for changes to the development files.
+   - `other` for changes to files like `README.md`, `LICENSE` or `CONTRIBUTING.md`.
 
 # Versioning
 This project follows the Semantic Versioning Specification (Semver). A quick overview of Semver is:
@@ -9,8 +34,8 @@ This project follows the Semantic Versioning Specification (Semver). A quick ove
  - Major version MUST be incremented if any backwards incompatible changes are introduced to the public API.
  - Minor version MUST be incremented if new, backwards compatible functionality is introduced to the public API.
  - Patch version MUST be incremented if only backwards compatible bug fixes are introduced.
- - When incrementing the major, the minor and patch are reset to 0.
- - When incrementing the minor, the patch is reset to 0.
+ - When incrementing the major version: the minor and patch are reset to 0.
+ - When incrementing the minor version: the patch is reset to 0.
  - Anything >= 1.0.0 is ready for production.
 
 About Alpha and Beta:
