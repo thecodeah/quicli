@@ -1,7 +1,12 @@
 {
   "name": "quicli-js",
   "version": "0.1.0-alpha",
-  "description": "Create CLI's quickly with NodeJS and nothing else!",
+  "description": "Create CLI's quickly without any dependencies!",
+  "keywords": [
+    "cli",
+    "command-line",
+    "lightweight"
+  ],
   "main": "./out/quicli.npm.js",
   "files": [
     "out/quicli.npm.js"
