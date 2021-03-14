@@ -58,4 +58,4 @@ When going through the source code, you'll stumble across some unique syntax. Be
 
 **Steps:**
 1. Run `npm install`
-2. Run `node build`
+2. Run `npm run build`
