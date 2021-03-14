@@ -27,64 +27,71 @@ const { cli, $ } = require("quicli-js");
 
 ## Documentation
 
-### cli.addCommand(name, callback)
-* **Description:** Registers a new command.
-* **Arguments:** name: string, callback: function
-* **Return value:** void
-* **Notes:**
-   * The parameters in the callback function are also the flags that your command will be able to accept.
-   * The provided arguments are either `undefined` (If the flag was not provided by the user) or an array containing strings and/or numbers.
-   * In case of using a rest parameter, the provided arguments will be an array of `{ name: "flagName", values: [] }`. 
-   * Flags are capable of accepting multiple values.
-   * You can have nested commands by using the dot separator in the command name (Ex. `options.set`)
-
-### cli.log(...args)
-* **Description:** Alternative to `console.log()` with text styling capabilities.
-* **Example:** `cli.log($.BOLD, $.GREEN, "It's a beautiful day!");`
-* **Arguments:** ...args: string[]
-* **Return value:** void
+Proper documentation coming soon...
 
 ## Examples
 
-### Simple example
+### Example Nº1
 `myapp.js`
 ```js
-cli.addCommand("iam", (name, age) => {
-    cli.log(`You are ${name[0]} and you are ${age[0]} years old!`);
-});
+cli.addCommand("iam", (flags) => {
+    if(flags.name && flags.age) {
+        cli.log(`You are ${flags.name[0]} and you are ${flags.age[0]} years old!`);
+    } else {
+        cli.log($.RED, "Missing flags: ", $.CLEAR, "name, age");
+    }
+})
+.addFlag("name", "string")
+.addFlag("age", "number")
 ```
 `terminal`
 ```shell
 > node myapp iam --name John --age 26
 You are John and you are 26 years old!
 ```
-### Advanced example
+### Example Nº2
+`myapp.js`
+```js
+cli.addCommand("mkdir", (flags) => {
+    if(flags.name) {
+        flags.name.forEach((name) => {
+            cli.log(`Creating ${name} directory`);
+            fs.mkdirSync(name);
+        })
+    } else {
+        cli.log($.RED, "No names were specified!");
+    }
+})
+.addFlag("name", "string")
+```
+`terminal`
+```shell
+> node myapp mkdir --name foo --name bar --name 23
+Incorrect type: name must be a string!
+Creating bar directory
+Creating foo directory
+```
+### Example Nº3
 `myapp.js`
 ```js
 const fs = require("fs");
 const optionsFile = "./options.json";
-const validOptions = ["option1", "option2", "option3"];
 
-cli.addCommand("options.set", (...flags) => {
+cli.addCommand("options.set", (flags) => {
     let options = {};
     if (fs.existsSync(optionsFile)) {
         options = JSON.parse(fs.readFileSync(optionsFile));
     }
 
-    flags.forEach((flag) => {
-        if (validOptions.includes(flag.name)) {
-            if (flag.values.length > 0) {
-                options[flag.name] = flag.values[0];
-            } else {
-                cli.log($.RED, "Missing value at: ", $.CLEAR, flag.name);
-            }
-        } else {
-            cli.log($.RED, "Invalid option: ", $.CLEAR, flag.name);
+    for(let flagName in flags) {
+        if (flags[flagName].length > 0) {
+            options[flagName] = flags[flagName][0];
         }
-    });
+    }
 
     fs.writeFileSync(optionsFile, JSON.stringify(options, null, 4));
-});
+})
+.addFlag("*") // Accept any flags of any type
 ```
 `terminal`
 ```shell
