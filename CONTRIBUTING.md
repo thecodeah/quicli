@@ -3,16 +3,15 @@
  - Development - refers to files that are not provided to the end-user (Eg. files that are used to assist the development process.)
 
 # Rules
- 1. Before committing, make sure you build the project!
- 2. Before making a pull request, make sure you run `changelog generate`!
- 3. When adding new functions, keep them in the `cli` namespace.
- 4. When modifying production code you can only import libraries that are provided by NodeJS by default (Such as `fs`, `path`).
- 5. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
+ 1. Before committing modified production code, make sure you build the project!
+ 2. When adding new functions, keep them in the `cli` namespace.
+ 3. When modifying production code you can only import libraries that are provided by NodeJS by default (Such as `fs`, `path`).
+ 4. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
 
 # Commit Message Format
 This project uses `generate-changelog` to generate a `CHANGELOG.md` file. Because of this, commit messages need to follow a specific format:
 ```
-type(category): description
+type: description
 ```
  - type:
    - `breaking` - A change that breaks backwards-compatability **(Production)**
@@ -23,10 +22,8 @@ type(category): description
    - `chore` - Changes related to: the build system (involving scripts, configurations or tools) and dev dependencies **(Development)**
    - `test` - Adding new tests, changes to tests **(Development)**
    - `other` - Anything else...
- - category:
-   - `prod` for changes to the production code.
-   - `dev` for changes to the development files.
-   - `other` for changes to files like `README.md`, `LICENSE` or `CONTRIBUTING.md`.
+
+If a commit does not follow this format, then it won't get added to the change log.
 
 # Versioning
 This project follows the Semantic Versioning Specification (Semver). A quick overview of Semver is:
