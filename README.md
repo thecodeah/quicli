@@ -35,14 +35,10 @@ Proper documentation coming soon...
 `myapp.js`
 ```js
 cli.addCommand("iam", (flags) => {
-    if(flags.name && flags.age) {
-        cli.log(`You are ${flags.name[0]} and you are ${flags.age[0]} years old!`);
-    } else {
-        cli.log($.RED, "Missing flags: ", $.CLEAR, "name, age");
-    }
+    cli.log(`You are ${flags.name[0]} and you are ${flags.age[0]} years old!`);
 })
-.addFlag("name", "string")
-.addFlag("age", "number")
+.addFlag("name", "string", true) // name, type, required
+.addFlag("age", "number", true)
 ```
 `terminal`
 ```shell
@@ -53,23 +49,21 @@ You are John and you are 26 years old!
 `myapp.js`
 ```js
 cli.addCommand("mkdir", (flags) => {
-    if(flags.name) {
-        flags.name.forEach((name) => {
-            cli.log(`Creating ${name} directory`);
-            fs.mkdirSync(name);
-        })
-    } else {
-        cli.log($.RED, "No names were specified!");
-    }
+    flags.name.forEach((name) => {
+        cli.log(`Creating ${name} directory`);
+        fs.mkdirSync(name);
+    })
 })
-.addFlag("name", "string")
+.addFlag("name", "string", true) // name, type, required
 ```
 `terminal`
 ```shell
-> node myapp mkdir --name foo --name bar --name 23
+> node myapp mkdir --name foo bar 23
 Incorrect type: name must be a string!
-Creating bar directory
+Missing required flag: name
+> node myapp mkdir --name foo bar
 Creating foo directory
+Creating bar directory
 ```
 ### Example Nº3
 `myapp.js`
