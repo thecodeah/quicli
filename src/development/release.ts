@@ -34,8 +34,8 @@ async function release (type: SemverType) {
         console.log("Committing changes...");
         await git.commit(newVersion + " release!", ["."]);
 
-        console.log(`Creating ${newVersion} tag...`);
-        await git.addTag(newVersion);
+        console.log(`Creating v${newVersion} tag...`);
+        await git.addTag("v" + newVersion);
 
         console.log(`Version ${newVersion} is ready to be published!`);
     } else {
