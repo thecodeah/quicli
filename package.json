@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "Create CLI's quickly without any dependencies!",
   "author": "Codeah (codeah.nl)",
-  "repository": "thecodeah/quicli-js",
+  "repository": "thecodeah/quicli",
   "keywords": [
     "cli",
     "command-line",
