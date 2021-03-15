@@ -1,11 +1,12 @@
 // FlagTypes is a union of flag value types.
 type FlagTypes = string | boolean | number;
-type FlagTypeNames = "string" | "boolean" | "number";
+type FlagTypeNames = "any" | "string" | "boolean" | "number";
 
 // CommandFlags contain details about a flag that belongs to a command.
 interface CommandFlag {
     name: string;
-    type?: FlagTypeNames;
+    type: FlagTypeNames;
+    required: boolean;
 }
 
 // ProvidedFlag is a flag provided by the user.
@@ -31,10 +32,11 @@ class Command {
         return this.flags;
     }
 
-    public addFlag(name: string, type?: FlagTypeNames): this {
+    public addFlag(name: string, type: FlagTypeNames = "any", required: boolean = false): this {
         this.flags.push({
             name: name,
-            type: type
+            type: type,
+            required: required
         })
         return this;
     }

@@ -61,38 +61,58 @@ const callCommand = (args: Arguments) => {
         const matchingCommand = commandPool.find((cmd) => cmd.path === commandPath);
         if (matchingCommand !== undefined) {
             // Flag handling
-            let flags: Props = {};
-            args.flags.forEach((flag) => {
-                const matchingFlag = matchingCommand.getFlags().find((f) => f.name === flag.name || f.name === "*");
-                if(matchingFlag !== undefined) {
+            let props: Props = {};
+            args.flags.forEach((pFlag) => { // pFlag as in providedFlag
+                const matchingCmdFlag = matchingCommand.getFlags().find((cf) => cf.name === pFlag.name || cf.name === "*");
+                if(matchingCmdFlag !== undefined) {
                     // Type checking
                     let valid = true;
-                    if(matchingFlag.type !== undefined) {
-                        if(flag.values.length === 0) {
+                    if(matchingCmdFlag.type !== "any") {
+                        if(pFlag.values.length === 0) {
                             valid = false;
-                            cli.log($.RED, "Expected value: ", $.CLEAR, flag.name, " expects a ", matchingFlag.type, "!");
+                            cli.log($.RED, "Expected value: ", $.CLEAR, pFlag.name, " expects a ", matchingCmdFlag.type, "!");
                         } else {
-                            flag.values.forEach((value) => {
-                                if(typeof value !== matchingFlag.type) {
+                            pFlag.values.forEach((value) => {
+                                if(typeof value !== matchingCmdFlag.type) {
                                     valid = false;
-                                    cli.log($.RED, "Incorrect type: ", $.CLEAR, flag.name, " must be a ", matchingFlag.type, "!");
+                                    cli.log($.RED, "Incorrect type: ", $.CLEAR, pFlag.name, " must be a ", matchingCmdFlag.type, "!");
                                 }
                             })   
                         }
                     }
                     if(valid) {
-                        if(flags[flag.name] !== undefined) {
-                            flags[flag.name].push(...flag.values);
+                        if(props[pFlag.name] !== undefined) {
+                            props[pFlag.name].push(...pFlag.values);
                         } else {
-                            flags[flag.name] = flag.values;
+                            props[pFlag.name] = pFlag.values;
                         }
                     }
                 } else {
-                    cli.log($.RED, "Unexpected flag: ", $.CLEAR, flag.name);
+                    cli.log($.RED, "Unexpected flag: ", $.CLEAR, pFlag.name);
                 }
             })
 
-            matchingCommand.callback(flags);
+            // Check if all the required command flags were provided.
+            let hasMissingFlags = false;
+            matchingCommand.getFlags().forEach((cFlag) => { // cFlag as in commandFlag
+                if(cFlag.required) {
+                    if(cFlag.name === "*") {
+                        if(Object.keys(props).length === 0) {
+                            cli.log($.RED, "At least one flag is required!");
+                        }
+                    } else {
+                        const matchingProp = Object.keys(props).find((p) => p === cFlag.name);
+                        if(matchingProp === undefined) {
+                            hasMissingFlags = true;
+                            cli.log($.RED, "Missing required flag: ", $.CLEAR, cFlag.name);
+                        }
+                    }
+                }
+            })
+
+            if(!hasMissingFlags) {
+                matchingCommand.callback(props);
+            }
         } else {
             cli.log($.RED + "Unknown command: " + $.CLEAR + args.commands.join(" -> "));
         }
