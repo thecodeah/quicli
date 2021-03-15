@@ -26,8 +26,10 @@ async function release (type: SemverType) {
         console.log("Building project...");
         await build();
 
+        // When using the -p flag, auto-changelog uses the version from package.json as the latest release,
+        // so that all commits between the previous release and now become part of that version.
         console.log("Updating changelog...");
-        execSync("npx auto-changelog --hide-credit");
+        execSync("npx auto-changelog -p --hide-credit");
 
         console.log("Committing changes...");
         await git.commit(newVersion + " release!", ["."]);
