@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.3.0](https://github.com/thecodeah/quicli/compare/v0.2.0...v0.3.0)
+
+- chore: Moved dev scripts to src dir and switched to TS, new changelog generator, unmangled vars in build w exports [`87a185d`](https://github.com/thecodeah/quicli/commit/87a185d1a1ac1049f548588f169fb57032277ff4)
+- feat: Added 'required' parameter to the addFlag() function [`ac97ba3`](https://github.com/thecodeah/quicli/commit/ac97ba3a0915bd74e53fd336de6b81e75b6eeb4e)
+- docs: Update README.md examples to use 'required' parameter in addFlag() [`6ec1cb5`](https://github.com/thecodeah/quicli/commit/6ec1cb5e6be633a89aac5b60fe08f9ea233b6beb)
+
 #### [v0.2.0](https://github.com/thecodeah/quicli/compare/v0.1.0...v0.2.0)
 
 > 15 March 2021
