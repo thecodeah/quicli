@@ -10,7 +10,7 @@
 ## Getting started
 
 ### Without a package manager:
-1. Simply copy and paste the contents of the `out/quicli.min.js` file in this repository to a `.js` file.
+1. Simply copy and paste the contents of the `lib/quicli.min.js` file in this repository to a `.js` file.
 2. On a new line below the pasted contents, add some commands (Check the examples below).
 3. Run your CLI with `node myapp mycommand`.
 

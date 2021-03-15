@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "outDir": "../../chores/"
+    },
+    "include": [
+        "./**/*"
+    ]
+}

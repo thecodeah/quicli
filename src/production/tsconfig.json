@@ -1,0 +1,9 @@
+// NOTE: This configuration is only for linting, the custom build script does the transpiling.
+{
+    "compilerOptions": {
+        "module": "None",
+    },
+    "include": [
+        "./**/*"
+    ]
+}

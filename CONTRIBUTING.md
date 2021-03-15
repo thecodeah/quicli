@@ -9,7 +9,7 @@
  4. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
 
 # Commit Message Format
-This project uses `generate-changelog` to generate a `CHANGELOG.md` file. Because of this, commit messages need to follow a specific format:
+This project uses a semantic commit message format in order to generate a `CHANGELOG.md` file.
 ```
 type: description
 ```
