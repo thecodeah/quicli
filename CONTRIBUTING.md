@@ -1,5 +1,5 @@
 # Definitions
- - Production - refers to any code in the `./src/*` directory, this code will eventually be compiled and provided to the end-user.
+ - Production - refers to any code in the `./src/production/` directory, this code will eventually be compiled and provided to the end-user.
  - Development - refers to files that are not provided to the end-user (Eg. files that are used to assist the development process.)
 
 # Rules
