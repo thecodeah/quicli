@@ -30,7 +30,7 @@ const parseArgs = (): Arguments => {
             if (providedFlags.length > 0) {
                 // It's a flag value
                 let parsedValue: any;
-                if (arg.match(/[0-9]+/)) {
+                if (arg.match(/^[0-9]+$/)) {
                     // It's a number
                     parsedValue = Number(arg);
                 } else if(arg === "true" || arg === "false") {
