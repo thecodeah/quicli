@@ -5,8 +5,12 @@ global: const cli = (function () {
     include: "./commands";
     include: "./logic";
 
-    process.addListener("beforeExit", () => {
-        callCommand(parseArgs());
+    let executed = false;
+    process.addListener("beforeExit", (code) => {
+        if(executed === false) {
+            executed = true;
+            callCommand(parseArgs());
+        }
     });
 
     return {
