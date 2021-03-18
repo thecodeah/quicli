@@ -3,9 +3,7 @@
 **DISCLAIMER: THIS PROJECT IS IN IT'S ALPHA/EXPLORATORY PHASE. UPDATES MAY INCLUDE DRASTIC API CHANGES.**
 ### Why QuiCLI?
 
- * **Quick:** Get a working CLI ready within seconds!
- * **Simple:** An incredibly easy-to-use API.
- * **Dependency-less:** Only requires NodeJS and nothing else.
+What makes QuiCLI different from all the other CLI frameworks is that it was designed to be used without a package manager or external files. The built code has no dependencies and is entirely minified into a single line. Paste it on top of a new `.js` file and you're ready to go! No `package.json`, no `node_modules`, your colleagues don't have to install any global packages making it a great cross-platform alternative to shell/batch scripts.
 
 ## Getting started
 
