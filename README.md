@@ -48,22 +48,32 @@ You are John and you are 26 years old!
 ### Example Nº2
 `myapp.js`
 ```js
-cli.addCommand("mkdir", (flags) => {
-    flags.name.forEach((name) => {
-        cli.log(`Creating ${name} directory`);
-        fs.mkdirSync(name);
-    })
+const dishes = [
+    { name: "Hamburger", price: 6.00 },
+    { name: "Soup", price: 4.50 },
+    { name: "Noodles", price: 3.00 }
+]
+
+cli.addCommand("order", async (flags) => {
+    cli.log("Pick a dish:")
+    const dishIndex = await cli.promptMenu(dishes.map((dish) => `${dish.name} - $${dish.price}`));
+
+    cli.log(
+        $.BOLD + "Great!",
+        $.GREEN + "$" + (dishes[dishIndex].price),
+        $.CLEAR + "has been withdrawn from your card and your food is being prepared...",
+    );
 })
-.addFlag("name", "string", true) // name, type, required
+.addFlag("address", "string", true);
 ```
 `terminal`
 ```shell
-> node myapp mkdir --name foo bar 23
-Incorrect type: name must be a string!
-Missing required flag: name
-> node myapp mkdir --name foo bar
-Creating foo directory
-Creating bar directory
+> node myapp order --address "1600 Pennsylvania Ave, Washington, DC"
+Pick a dish:
+ 🡪 Hamburger - $6 
+ 🡪 Soup - $4.5 (selected)
+ 🡪 Noodles - $3 
+Great! $4.5 has been withdrawn from your card and your food is being prepared...
 ```
 ### Example Nº3
 `myapp.js`
