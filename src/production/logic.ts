@@ -70,12 +70,12 @@ const callCommand = (args: Arguments) => {
                     if(matchingCmdFlag.type !== "any") {
                         if(pFlag.values.length === 0) {
                             valid = false;
-                            cli.log($.RED, "Expected value: ", $.CLEAR, pFlag.name, " expects a ", matchingCmdFlag.type, "!");
+                            cli.log($.RED + "Expected value:", $.CLEAR + pFlag.name, "expects a", matchingCmdFlag.type + "!");
                         } else {
                             pFlag.values.forEach((value) => {
                                 if(typeof value !== matchingCmdFlag.type) {
                                     valid = false;
-                                    cli.log($.RED, "Incorrect type: ", $.CLEAR, pFlag.name, " must be a ", matchingCmdFlag.type, "!");
+                                    cli.log($.RED + "Incorrect type:", $.CLEAR + pFlag.name, "must be a", matchingCmdFlag.type + "!");
                                 }
                             })   
                         }
@@ -88,7 +88,7 @@ const callCommand = (args: Arguments) => {
                         }
                     }
                 } else {
-                    cli.log($.RED, "Unexpected flag: ", $.CLEAR, pFlag.name);
+                    cli.log($.RED + "Unexpected flag:", $.CLEAR + pFlag.name);
                 }
             })
 
@@ -98,13 +98,13 @@ const callCommand = (args: Arguments) => {
                 if(cFlag.required) {
                     if(cFlag.name === "*") {
                         if(Object.keys(props).length === 0) {
-                            cli.log($.RED, "At least one flag is required!");
+                            cli.log($.RED + "At least one flag is required!");
                         }
                     } else {
                         const matchingProp = Object.keys(props).find((p) => p === cFlag.name);
                         if(matchingProp === undefined) {
                             hasMissingFlags = true;
-                            cli.log($.RED, "Missing required flag: ", $.CLEAR, cFlag.name);
+                            cli.log($.RED + "Missing required flag:", $.CLEAR + cFlag.name);
                         }
                     }
                 }
@@ -114,7 +114,7 @@ const callCommand = (args: Arguments) => {
                 matchingCommand.callback(props);
             }
         } else {
-            cli.log($.RED + "Unknown command: " + $.CLEAR + args.commands.join(" -> "));
+            cli.log($.RED + "Unknown command:", $.CLEAR + args.commands.join(" -> "));
         }
     }
 }
