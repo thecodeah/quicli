@@ -1,7 +1,7 @@
 {
   "name": "quicli-js",
   "version": "0.4.0",
-  "description": "Create CLI's quickly without any dependencies!",
+  "description": "A CLI framework with zero dependencies!",
   "author": "Codeah (codeah.nl)",
   "repository": "thecodeah/quicli",
   "keywords": [
