@@ -56,11 +56,16 @@ cli.addCommand("order", async (flags) => {
     cli.log("Pick a dish:")
     const dishIndex = await cli.promptMenu(dishes.map((dish) => `${dish.name} - $${dish.price}`));
 
-    cli.log(
-        $.BOLD + "Great!",
-        $.GREEN + "$" + (dishes[dishIndex].price),
-        $.CLEAR + "has been withdrawn from your card and your food is being prepared...",
-    );
+    const confirmationResponse = await cli.promptInput("Are you sure? (yes/no)");
+    if(confirmationResponse.toLowerCase() === "yes") {
+        cli.log(
+            $.BOLD + "Great!",
+            $.GREEN + "$" + (dishes[dishIndex].price),
+            $.CLEAR + "has been withdrawn from your card and your food is being prepared...",
+        );
+    } else {
+        cli.log($.RED + "Order cancelled.");
+    }
 })
 .addFlag("address", "string", true);
 ```
