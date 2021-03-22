@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.5.0](https://github.com/thecodeah/quicli/compare/v0.4.0...v0.5.0)
+
+- feat: cli.promptInput() [`64bdc14`](https://github.com/thecodeah/quicli/commit/64bdc14953d8bcdbbfe4d7db8ced8d99d56c5fbe)
+- docs: Added example usage of cli.promptInput() to README.md [`6c54a87`](https://github.com/thecodeah/quicli/commit/6c54a87a206f99f7c9d04bcfbf4f61753c49a677)
+- docs: Update Why QuiCLI section in README.md with better information [`0ae9cc3`](https://github.com/thecodeah/quicli/commit/0ae9cc3e127bfa5a83946c47e6acb9b0c28cf7d0)
+
 #### [v0.4.0](https://github.com/thecodeah/quicli/compare/v0.3.0...v0.4.0)
+
+> 18 March 2021
 
 - feat: Menus! (cli.promptMenu) [`adc7c85`](https://github.com/thecodeah/quicli/commit/adc7c851e7bb53624e52b4d01628dbf2615e03b6)
 - feat: Put spaces between each cli.log argument just like console.log [`7d828ed`](https://github.com/thecodeah/quicli/commit/7d828ed17a12dce2bf33a4fc9571716cd0a1e8e4)
