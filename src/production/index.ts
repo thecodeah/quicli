@@ -4,7 +4,7 @@ global: const cli = (function () {
     include: "./log";
     include: "./commands";
     include: "./logic";
-    include: "./menu";
+    include: "./input";
 
     let executed = false;
     process.addListener("beforeExit", (code) => {
@@ -17,6 +17,7 @@ global: const cli = (function () {
     return {
         log: log,
         addCommand: addCommand,
-        promptMenu: promptMenu
+        promptMenu: promptMenu,
+        promptInput: promptInput
     };
 }());
