@@ -3,6 +3,7 @@
   "version": "0.5.0",
   "description": "A CLI framework with zero dependencies!",
   "author": "Codeah (codeah.nl)",
+  "license": "Unlicense",
   "repository": "thecodeah/quicli",
   "keywords": [
     "cli",
