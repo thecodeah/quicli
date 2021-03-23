@@ -73,9 +73,10 @@ cli.addCommand("order", async (flags) => {
 ```shell
 > node myapp order --address "1600 Pennsylvania Ave, Washington, DC"
 Pick a dish:
- 🡪 Hamburger - $6 
- 🡪 Soup - $4.5 (selected)
- 🡪 Noodles - $3 
+ ➔ Hamburger - $6 
+ ➔ Soup - $4.5 (selected)
+ ➔ Noodles - $3 
+Are you sure? (yes/no) yes
 Great! $4.5 has been withdrawn from your card and your food is being prepared...
 ```
 ### Example Nº3
