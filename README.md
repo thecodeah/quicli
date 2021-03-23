@@ -2,7 +2,9 @@
 
 ## Why QuiCLI?
 
-What makes QuiCLI different from all the other CLI frameworks is that it was designed to be used without a package manager or external files. The built code has no dependencies and is entirely minified into a single line. Paste it on top of a new `.js` file and you're ready to go! No `package.json`, no `node_modules`, your colleagues don't have to install any global packages making it a great cross-platform alternative to shell/batch scripts.
+What makes QuiCLI different from all the other CLI frameworks is that it was initially designed to be used without a package manager or external files. The built code has no dependencies and is entirely minified into a single line. Paste it on top of a new `.js` file and you're ready to go! No `package.json`, no `node_modules`, your colleagues don't have to install any global packages making it a great cross-platform alternative to shell scripts in development environments.
+
+When the purpose of the CLI is not just to assist development, it's probably a better idea to use QuiCLI as a module with a package manager.
 
 ## Getting started
 
