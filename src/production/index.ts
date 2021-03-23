@@ -4,7 +4,7 @@ global: const cli = (function () {
     include: "./log";
     include: "./commands";
     include: "./logic";
-    include: "./input";
+    include: "./prompt/index";
 
     let executed = false;
     process.addListener("beforeExit", (code) => {
