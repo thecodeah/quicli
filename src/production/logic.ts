@@ -57,63 +57,63 @@ const parseArgs = (): Arguments => {
 
 const callCommand = (args: Arguments) => {
     const commandPath = args.commands.join(".");
-    if (commandPath !== "") {
-        const matchingCommand = commandPool.find((cmd) => cmd.path === commandPath);
-        if (matchingCommand !== undefined) {
-            // Flag handling
-            let props: Props = {};
-            args.flags.forEach((pFlag) => { // pFlag as in providedFlag
-                const matchingCmdFlag = matchingCommand.getFlags().find((cf) => cf.name === pFlag.name || cf.name === "*");
-                if(matchingCmdFlag !== undefined) {
-                    // Type checking
-                    let valid = true;
-                    if(matchingCmdFlag.type !== "any") {
-                        if(pFlag.values.length === 0) {
-                            valid = false;
-                            cli.log($.RED + "Expected value:", $.CLEAR + pFlag.name, "expects a", matchingCmdFlag.type + "!");
-                        } else {
-                            pFlag.values.forEach((value) => {
-                                if(typeof value !== matchingCmdFlag.type) {
-                                    valid = false;
-                                    cli.log($.RED + "Incorrect type:", $.CLEAR + pFlag.name, "must be a", matchingCmdFlag.type + "!");
-                                }
-                            })   
-                        }
+    const matchingCommand = commandPool.find((cmd) => cmd.path === commandPath);
+    if (matchingCommand !== undefined) {
+        // Flag handling
+        let props: Props = {};
+        args.flags.forEach((pFlag) => { // pFlag as in providedFlag
+            const matchingCmdFlag = matchingCommand.getFlags().find((cf) => cf.name === pFlag.name || cf.name === "*");
+            if(matchingCmdFlag !== undefined) {
+                // Type checking
+                let valid = true;
+                if(matchingCmdFlag.type !== "any") {
+                    if(pFlag.values.length === 0) {
+                        valid = false;
+                        cli.log($.RED + "Expected value:", $.CLEAR + pFlag.name, "expects a", matchingCmdFlag.type + "!");
+                    } else {
+                        pFlag.values.forEach((value) => {
+                            if(typeof value !== matchingCmdFlag.type) {
+                                valid = false;
+                                cli.log($.RED + "Incorrect type:", $.CLEAR + pFlag.name, "must be a", matchingCmdFlag.type + "!");
+                            }
+                        })   
                     }
-                    if(valid) {
-                        if(props[pFlag.name] !== undefined) {
-                            props[pFlag.name].push(...pFlag.values);
-                        } else {
-                            props[pFlag.name] = pFlag.values;
-                        }
+                }
+                if(valid) {
+                    if(props[pFlag.name] !== undefined) {
+                        props[pFlag.name].push(...pFlag.values);
+                    } else {
+                        props[pFlag.name] = pFlag.values;
+                    }
+                }
+            } else {
+                cli.log($.RED + "Unexpected flag:", $.CLEAR + pFlag.name);
+            }
+        })
+
+        // Check if all the required command flags were provided.
+        let hasMissingFlags = false;
+        matchingCommand.getFlags().forEach((cFlag) => { // cFlag as in commandFlag
+            if(cFlag.required) {
+                if(cFlag.name === "*") {
+                    if(Object.keys(props).length === 0) {
+                        cli.log($.RED + "At least one flag is required!");
                     }
                 } else {
-                    cli.log($.RED + "Unexpected flag:", $.CLEAR + pFlag.name);
-                }
-            })
-
-            // Check if all the required command flags were provided.
-            let hasMissingFlags = false;
-            matchingCommand.getFlags().forEach((cFlag) => { // cFlag as in commandFlag
-                if(cFlag.required) {
-                    if(cFlag.name === "*") {
-                        if(Object.keys(props).length === 0) {
-                            cli.log($.RED + "At least one flag is required!");
-                        }
-                    } else {
-                        const matchingProp = Object.keys(props).find((p) => p === cFlag.name);
-                        if(matchingProp === undefined) {
-                            hasMissingFlags = true;
-                            cli.log($.RED + "Missing required flag:", $.CLEAR + cFlag.name);
-                        }
+                    const matchingProp = Object.keys(props).find((p) => p === cFlag.name);
+                    if(matchingProp === undefined) {
+                        hasMissingFlags = true;
+                        cli.log($.RED + "Missing required flag:", $.CLEAR + cFlag.name);
                     }
                 }
-            })
-
-            if(!hasMissingFlags) {
-                matchingCommand.callback(props);
             }
-        } else {
+        })
+
+        if(!hasMissingFlags) {
+            matchingCommand.callback(props);
+        }
+    } else {
+        if(commandPath !== "") {
             cli.log($.RED + "Unknown command:", $.CLEAR + args.commands.join(" -> "));
         }
     }
