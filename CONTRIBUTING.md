@@ -3,7 +3,7 @@
  - Development - refers to files that are not provided to the end-user (Eg. files that are used to assist the development process.)
 
 # Rules
- 1. Before committing modified production code, make sure you build the project!
+ 1. Do not include the built code (Files inside of `./lib`) in your commits! This code is harder to read for humans, thus also harder to be checked for any malicious code. The `./lib` files are only committed in release commits by the project maintainer.
  2. When adding new functions, keep them in the `cli` namespace.
  3. When modifying production code you can only import libraries that are provided by NodeJS by default (Such as `fs`, `path`).
  4. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
