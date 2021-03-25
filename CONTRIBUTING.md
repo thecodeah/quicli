@@ -9,7 +9,7 @@
  4. Either disable your formatter or make sure it's configured in a way that it won't modify all the lines in the file that you're working on. Any pull requests full of removed/added whitespace and restructured syntax will be declined.
 
 # Commit Message Format
-This project uses a semantic commit message format in order to generate a `CHANGELOG.md` file.
+This project uses a semantic commit message format.
 ```
 type: description
 ```
@@ -22,8 +22,6 @@ type: description
    - `chore` - Changes related to: the build system (involving scripts, configurations or tools) and dev dependencies **(Development)**
    - `test` - Adding new tests, changes to tests **(Development)**
    - `other` - Anything else...
-
-If a commit does not follow this format, then it won't get added to the change log.
 
 # Versioning
 This project follows the Semantic Versioning Specification (Semver). A quick overview of Semver is:
