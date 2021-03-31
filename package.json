@@ -16,14 +16,17 @@
   ],
   "scripts": {
     "build": "tsc -p src/development/ && node chores/build.js",
-    "release": "tsc -p src/development/ && node chores/release.js"
+    "release": "tsc -p src/development/ && node chores/release.js",
+    "docs": "tsc -p src/development/ && node chores/docs.js"
   },
   "devDependencies": {
     "@types/minify": "^6.0.0",
     "@types/node": "^14.14.33",
     "auto-changelog": "^2.2.1",
+    "handlebars": "^4.7.7",
     "minify": "^7.0.1",
     "simple-git": "^2.36.2",
+    "typedoc": "^0.20.34",
     "typescript": "^4.2.3"
   }
 }

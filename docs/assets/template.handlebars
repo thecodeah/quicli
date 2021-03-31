@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <title>QuiCLI - Create CLI's quickly with zero dependencies!</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='assets/main.css'/>
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
+</head>
+<body>
+    <header>
+        <img alt="Logo" class="logo" src="assets/logo.svg"/>
+        <nav>
+            <ul>
+                <a href="/"><li><b>Docs</b></li></a>
+                <a href="https://github.com/thecodeah/quicli"><li>Source</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <nav class="section-nav">
+            <h3>Sections:</h3>
+            <ul>
+                {{#each sections as |section|}}
+                    <a href="#{{section.slug}}"><li>{{section.name}}</li></a>
+                {{/each}}
+            </ul>
+        </nav>
+        <div class="documentation">
+            {{#each sections as |section|}}
+                <section id="{{section.slug}}">
+                    <h2>{{ section.name }}</h2>
+                    {{#each doclets as |doclet|}}
+                        <div class="doclet">
+                            <h3 id="{{doclet.slug}}">{{doclet.kind}} - {{section.name}}.{{doclet.name}}</h3>
+
+                            {{!-- Description --}}
+                            {{#if doclet.comment}}
+                                <p>Description: {{doclet.comment}}</p>
+                            {{/if}}
+
+                            {{!-- Returns --}}
+                            {{#if doclet.returns}}
+                                <p>Returns: {{doclet.returns}}</p>
+                            {{/if}}
+
+                            {{!-- Parameters --}}
+                            {{#if doclet.parameters}}
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    {{#each doclet.parameters as |parameter|}}
+                                        <tr>
+                                            <td>{{parameter.name}}</td>
+                                            <td>{{parameter.type}}</td>
+                                            <td>{{parameter.description}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </table>
+                            {{/if}}
+                        </div>
+                    {{/each}}
+                </section>
+            {{/each}}
+        </div>
+    </main>
+</body>
+</html>

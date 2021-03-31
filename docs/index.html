@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <title>QuiCLI - Create CLI's quickly with zero dependencies!</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='assets/main.css'/>
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
+</head>
+<body>
+    <header>
+        <img alt="Logo" class="logo" src="assets/logo.svg"/>
+        <nav>
+            <ul>
+                <a href="/"><li><b>Docs</b></li></a>
+                <a href="https://github.com/thecodeah/quicli"><li>Source</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <nav class="section-nav">
+            <h3>Sections:</h3>
+            <ul>
+                    <a href="#cli-section"><li>cli</li></a>
+                    <a href="#command-section"><li>Command</li></a>
+            </ul>
+        </nav>
+        <div class="documentation">
+                <section id="cli-section">
+                    <h2>cli</h2>
+                        <div class="doclet">
+                            <h3 id="cli-addcommand">Function - cli.addCommand</h3>
+
+                                <p>Description: The addCommand function registers a new command to the command pool.</p>
+
+                                <p>Returns: A Command object to set additional information, eg. flags.</p>
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                        <tr>
+                                            <td>path</td>
+                                            <td>string</td>
+                                            <td>The command name. For nested commands, separate each name with a dot.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>callback</td>
+                                            <td>function</td>
+                                            <td>The function that will be called when the command is used.</td>
+                                        </tr>
+                                </table>
+                        </div>
+                        <div class="doclet">
+                            <h3 id="cli-log">Function - cli.log</h3>
+
+                                <p>Description: An alternative to console.log() with color styling capabilities.</p>
+
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                        <tr>
+                                            <td>args</td>
+                                            <td>string[]</td>
+                                            <td>An array of strings to be written to stdout.
+</td>
+                                        </tr>
+                                </table>
+                        </div>
+                        <div class="doclet">
+                            <h3 id="cli-promptinput">Function - cli.promptInput</h3>
+
+                                <p>Description: Prompts for input to stdout and stdin.</p>
+
+                                <p>Returns: A promise with the input string.</p>
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                        <tr>
+                                            <td>message</td>
+                                            <td>string</td>
+                                            <td>The message that comes before the input.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>censored</td>
+                                            <td>boolean</td>
+                                            <td>Whether the input should be censored or not. Useful for passwords.</td>
+                                        </tr>
+                                </table>
+                        </div>
+                        <div class="doclet">
+                            <h3 id="cli-promptmenu">Function - cli.promptMenu</h3>
+
+                                <p>Description: Prompts a list of options to stdout that is interactable.</p>
+
+                                <p>Returns: A promise with the selected option.
+In case an array of strings were provided as items, it will return the index of the selected item.
+Otherwise it will return the value of the selected item.</p>
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                        <tr>
+                                            <td>items</td>
+                                            <td>MenuParams</td>
+                                            <td>An array of strings or an array of { text: string, value: any }</td>
+                                        </tr>
+                                </table>
+                        </div>
+                </section>
+                <section id="command-section">
+                    <h2>Command</h2>
+                        <div class="doclet">
+                            <h3 id="command-addflag">Method - Command.addFlag</h3>
+
+                                <p>Description: Registers a flag to a command.</p>
+
+                                <p>Returns: A command object for chaining.</p>
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                        <tr>
+                                            <td>name</td>
+                                            <td>string</td>
+                                            <td>The name of the flag.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>type</td>
+                                            <td>FlagTypeNames</td>
+                                            <td>The type of value this flag will accept. Any by default.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>required</td>
+                                            <td>boolean</td>
+                                            <td>Is this flag required or optional?</td>
+                                        </tr>
+                                </table>
+                        </div>
+                </section>
+        </div>
+    </main>
+</body>
+</html>
