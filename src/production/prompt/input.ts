@@ -70,6 +70,13 @@ class InputPrompt {
     }
 }
 
+/**
+ * Prompts for input to stdout and stdin.
+ * @memberof cli
+ * @param message The message that comes before the input.
+ * @param censored Whether the input should be censored or not. Useful for passwords.
+ * @returns A promise with the input string.
+ */
 function promptInput(message: string, censored: boolean = false) {
     return new InputPrompt(message, censored).prompt();
 }

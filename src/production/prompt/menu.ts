@@ -81,6 +81,14 @@ class MenuPrompt {
     }
 }
 
+/**
+ * Prompts a list of options to stdout that is interactable.
+ * @memberof cli
+ * @param items An array of strings or an array of { text: string, value: any }
+ * @returns A promise with the selected option.
+ * In case an array of strings were provided as items, it will return the index of the selected item.
+ * Otherwise it will return the value of the selected item.
+ */
 async function promptMenu(items: MenuParams) {
     return await new MenuPrompt(items).prompt();
 }

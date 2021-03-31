@@ -1,5 +1,6 @@
 include: "./style";
 
+/** @namespace */
 global: const cli = (function () {
     include: "./log";
     include: "./commands";
