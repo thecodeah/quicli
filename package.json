@@ -5,6 +5,7 @@
   "author": "Codeah (codeah.nl)",
   "license": "Unlicense",
   "repository": "thecodeah/quicli",
+  "homepage": "https://quicli.js.org",
   "keywords": [
     "cli",
     "command-line",
