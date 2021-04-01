@@ -63,6 +63,10 @@ header a {
 }
 
 /* Content Navigation Sidebar */
+.section-nav {
+    overflow: hidden;
+}
+
 .section-nav h3 {
     margin-bottom: 0.5em;
 }
@@ -85,6 +89,12 @@ main {
 
     padding: 0 var(--horizontal-content-padding);
     margin: 1.5em 0;
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        grid-template-columns: 0% auto;
+    }
 }
 
 /* Documentation */
