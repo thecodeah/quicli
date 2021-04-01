@@ -26,7 +26,7 @@ const { cli, $ } = require("quicli-js");
 
 ## Documentation
 
-Proper documentation coming soon...
+Documentation can be found on [our website](http://quicli.js.org).
 
 ## Examples
 
