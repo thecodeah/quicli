@@ -150,6 +150,7 @@ header a {
 /* Content Navigation Sidebar */
 .section-nav {
     overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .section-nav h3 {
@@ -170,7 +171,8 @@ header a {
 /* Documentation and Navbar */
 main {
     display: grid;
-    grid-template-columns: 12.5em auto;
+    grid-template-columns: 10em auto;
+    gap: 1.5em;
 
     padding: 0 var(--horizontal-content-padding);
     margin: 2.5em 0;
