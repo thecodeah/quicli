@@ -31,7 +31,12 @@ export const build = async () => {
     parseFile("index.ts");
 
     // Transpile the buffer (Which contains Typescript code) to Javascript code.
-    const transpileOutput = ts.transpileModule(buffer, { compilerOptions: { module: ts.ModuleKind.CommonJS } });
+    const transpileOutput = ts.transpileModule(buffer, {
+        compilerOptions: {
+            module: ts.ModuleKind.CommonJS,
+            target: ts.ScriptTarget.ES2017
+        }
+    });
     // Because the minify function expects a file path, we have to write our transpiled code to a file.
     fs.writeFileSync(config.outFile.minified, transpileOutput.outputText);
     
