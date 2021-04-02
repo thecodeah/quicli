@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 import simpleGit, {SimpleGit} from 'simple-git';
 import { bumpVersion, SemverType } from "./utils";
 import { build } from "./build";
+import { generate as generateDocs } from "./docs";
 
 // Initialize a git client.
 const git: SimpleGit = simpleGit();
@@ -25,6 +26,9 @@ async function release (type: SemverType) {
         // The project has to be rebuilt in order to update the version in the header of the minified build.
         console.log("Building project...");
         await build();
+
+        console.log("Generating documentation...");
+        await generateDocs();
 
         // When using the -p flag, auto-changelog uses the version from package.json as the latest release,
         // so that all commits between the previous release and now become part of that version.

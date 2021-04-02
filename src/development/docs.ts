@@ -177,7 +177,7 @@ function constructRenderProps(doclets: typedoc.DeclarationReflection[]): RenderP
     return simpleReflection;
 }
 
-async function generate() {
+export async function generate() {
     const reflections = await getReflections();
     const doclets = getDoclets(reflections);
     const renderProps = constructRenderProps(doclets);
