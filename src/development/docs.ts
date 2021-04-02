@@ -3,6 +3,7 @@ import path from "path";
 import * as typedoc from "typedoc"
 import { Reflection, ReflectionKind } from "typedoc";
 import handlebars from "handlebars";
+import { getVersion } from "./utils";
 
 const config = {
     // Where Typedoc will look for documented code.
@@ -16,6 +17,7 @@ const config = {
 
 interface RenderProps {
     sections: RenderPropsSection[];
+    version: string;
 }
 
 interface RenderPropsSection {
@@ -84,7 +86,8 @@ function getDoclets(reflection: typedoc.ContainerReflection): Array<typedoc.Decl
  */
 function constructRenderProps(doclets: typedoc.DeclarationReflection[]): RenderProps {
     let renderProps: RenderProps = {
-        sections: []
+        sections: [],
+        version: getVersion()
     };
 
     // Populate the sections
