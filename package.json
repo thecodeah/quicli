@@ -11,9 +11,9 @@
     "command-line",
     "lightweight"
   ],
-  "main": "./lib/quicli.js",
+  "main": "./lib/quicli.exports.js",
   "files": [
-    "lib/quicli.js"
+    "lib/quicli.exports.js"
   ],
   "scripts": {
     "build": "tsc -p src/development/ && node chores/build.js",

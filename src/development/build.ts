@@ -10,7 +10,7 @@ const config = {
         // The copy & paste version.
         minified: "./lib/quicli.min.js",
         // The version with exports.
-        package: "./lib/quicli.js"
+        package: "./lib/quicli.exports.js"
     }
 };
 
@@ -32,16 +32,15 @@ export const build = async () => {
 
     // Transpile the buffer (Which contains Typescript code) to Javascript code.
     const transpileOutput = ts.transpileModule(buffer, { compilerOptions: { module: ts.ModuleKind.CommonJS } });
-
     // Because the minify function expects a file path, we have to write our transpiled code to a file.
     fs.writeFileSync(config.outFile.minified, transpileOutput.outputText);
-    // Writing the non-minified version with exports.
-    fs.writeFileSync(config.outFile.package, transpileOutput.outputText + `;module.exports={${globals.join(",")}};`);
-
+    
     // Minify the transpiled code.
     const minifiedCode = await minify(config.outFile.minified);
+    
     const header = `/* Using QuiCLI v${version} ${" ".repeat(256)} */`;
     fs.writeFileSync(config.outFile.minified, header + minifiedCode);
+    fs.writeFileSync(config.outFile.package, minifiedCode + `;module.exports={${globals.join(",")}};`);
 
     completeBuild();
 }
