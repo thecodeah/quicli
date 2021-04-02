@@ -84,6 +84,26 @@ cli.addCommand("iam", (flags) => {
                                 </table>
                         </div>
                         <div class="doclet">
+                            <h3 id="cli-question">Function - cli.question</h3>
+
+                                <p>Description: Prompts the user for input. (stdin, stdout)</p>
+
+                                <p>Returns: A promise containing the answer as a string.</p>
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                        <tr>
+                                            <td>message</td>
+                                            <td>string</td>
+                                            <td>The message that comes before the user input.</td>
+                                        </tr>
+                                </table>
+                        </div>
+                        <div class="doclet">
                             <h3 id="cli-log">Function - cli.log</h3>
 
                                 <p>Description: An alternative to console.log() with color styling capabilities.</p>
@@ -100,53 +120,6 @@ cli.addCommand("iam", (flags) => {
                                             <td>string[]</td>
                                             <td>An array of strings to be written to stdout.
 </td>
-                                        </tr>
-                                </table>
-                        </div>
-                        <div class="doclet">
-                            <h3 id="cli-promptinput">Function - cli.promptInput</h3>
-
-                                <p>Description: Prompts for input to stdout and stdin.</p>
-
-                                <p>Returns: A promise with the input string.</p>
-
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                    </tr>
-                                        <tr>
-                                            <td>message</td>
-                                            <td>string</td>
-                                            <td>The message that comes before the input.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>censored</td>
-                                            <td>boolean</td>
-                                            <td>Whether the input should be censored or not. Useful for passwords.</td>
-                                        </tr>
-                                </table>
-                        </div>
-                        <div class="doclet">
-                            <h3 id="cli-promptmenu">Function - cli.promptMenu</h3>
-
-                                <p>Description: Prompts a list of options to stdout that is interactable.</p>
-
-                                <p>Returns: A promise with the selected option.
-In case an array of strings were provided as items, it will return the index of the selected item.
-Otherwise it will return the value of the selected item.</p>
-
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                    </tr>
-                                        <tr>
-                                            <td>items</td>
-                                            <td>MenuParams</td>
-                                            <td>An array of strings or an array of { text: string, value: any }</td>
                                         </tr>
                                 </table>
                         </div>

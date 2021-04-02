@@ -40,7 +40,7 @@ Hello world!
 ### Input handling
 ```js
 cli.addCommand("foo", async (flags) => {
-    const answer = await cli.promptInput("What's up?");
+    const answer = await cli.question("What's up?");
     cli.log("Your answer: " + answer);
 })
 ```

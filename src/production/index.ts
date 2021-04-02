@@ -1,11 +1,10 @@
 include: "./style";
 
-/** @namespace */
 global: const cli = (function () {
     include: "./log";
     include: "./commands";
     include: "./logic";
-    include: "./prompt/index";
+    include: "./input"
 
     let executed = false;
     process.addListener("beforeExit", (code) => {
@@ -18,7 +17,6 @@ global: const cli = (function () {
     return {
         log: log,
         addCommand: addCommand,
-        promptMenu: promptMenu,
-        promptInput: promptInput
+        question: question
     };
 }());
