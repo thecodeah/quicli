@@ -97,6 +97,7 @@ const callCommand = (args: Arguments) => {
             if(cFlag.required) {
                 if(cFlag.name === "*") {
                     if(Object.keys(props).length === 0) {
+                        hasMissingFlags = true;
                         cli.log($.RED + "At least one flag is required!");
                     }
                 } else {
