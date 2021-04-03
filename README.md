@@ -3,7 +3,7 @@
 ## Why QuiCLI?
 QuiCLI is a lightweight CLI framework that was intentionally designed to be used without a package manager or any external files. The built code has no dependencies and is entirely minified into a single line. Paste it on top of a new `.js` file and you're ready to go! No `package.json`, no `node_modules` and your colleagues don't have to install any global packages making it a great cross-platform alternative to shell scripts in development environments.
 
-When creating CLI's with QuiCLI, the goal of the program should be to assist development. It's not meant to be used to create CLI's that will eventually be provided to end-users. There are better, and more feature-rich CLI frameworks that help you achieve that goal.
+When creating CLI's with QuiCLI, the goal of the program should be to assist development. It's not meant to be used to create CLI's that will eventually be provided to end-users. There are better, and more feature-rich CLI frameworks that can help you achieve that goal.
 
 ## Getting started
 
@@ -25,17 +25,17 @@ Hello world!
 ### Typed flags
 ```js
 cli.addCommand("foo", (flags) => {
-    cli.log("Hello world!");
+    cli.log(flags.bar[0], "is a nice number!");
 })
-.addFlag("foo", "number", true) // Name, Type, Required
+.addFlag("bar", "number", true) // Name, Type, Required
 ```
 ```
 > node myapp foo
-Missing flag: foo
-> node myapp foo --foo hello
-Incorrect type: foo must be a number!
-> node myapp foo --foo 24
-Hello world!
+Missing flag: bar
+> node myapp foo --bar hello
+Incorrect type: bar must be a number!
+> node myapp foo --bar 24
+24 is a nice number!
 ```
 ### Input handling
 ```js
@@ -45,7 +45,7 @@ cli.addCommand("foo", async (flags) => {
 })
 ```
 ```
-node myapp foo
+> node myapp foo
 What's up? Nothing much...
 Your answer: Nothing much...
 ```
