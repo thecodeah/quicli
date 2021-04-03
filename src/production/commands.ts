@@ -1,5 +1,10 @@
 // FlagTypes is a union of flag value types.
 type FlagTypes = string | boolean | number;
+
+/**
+ * The names of the types that a command flag can be.
+ * @memberof Command
+ */
 type FlagTypeNames = "any" | "string" | "boolean" | "number";
 
 // CommandFlags contain details about a flag that belongs to a command.
@@ -39,7 +44,7 @@ class Command {
     /**
      * Registers a flag to a command.
      * @param name The name of the flag.
-     * @param type The type of value this flag will accept. Any by default.
+     * @param type The type of value this flag will accept. "any" by default.
      * @param required Is this flag required or optional?
      * @returns A command object for chaining.
      */

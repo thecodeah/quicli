@@ -208,6 +208,12 @@ main {
     font-weight: normal;
 }
 
+.documentation code {
+    font-family: monospace;
+    padding: 0.25em;
+    font-size: 1.05em;
+}
+
 .documentation section {
     display: grid;
     gap: 1em;

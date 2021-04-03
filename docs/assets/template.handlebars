@@ -62,11 +62,16 @@ cli.addCommand("iam", (flags) => {
                     <h2>{{ section.name }}</h2>
                     {{#each doclets as |doclet|}}
                         <div class="doclet">
-                            <h3 id="{{doclet.slug}}">{{doclet.kind}} - {{section.name}}.{{doclet.name}}</h3>
+                            <h3 id="{{doclet.slug}}">{{doclet.kind}} - {{doclet.name}}</h3>
 
                             {{!-- Description --}}
                             {{#if doclet.comment}}
                                 <p>Description: {{doclet.comment}}</p>
+                            {{/if}}
+
+                            {{!-- Type --}}
+                            {{#if doclet.type}}
+                                <p>Type: <code>{{doclet.type}}</code></p>
                             {{/if}}
 
                             {{!-- Returns --}}
@@ -85,7 +90,7 @@ cli.addCommand("iam", (flags) => {
                                     {{#each doclet.parameters as |parameter|}}
                                         <tr>
                                             <td>{{parameter.name}}</td>
-                                            <td>{{parameter.type}}</td>
+                                            <td><code>{{parameter.type}}</code></td>
                                             <td>{{parameter.description}}</td>
                                         </tr>
                                     {{/each}}

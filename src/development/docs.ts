@@ -34,6 +34,7 @@ interface SimpleReflection {
     comment?: string;
     returns?: string;
     parameters?: SimpleParameter[];
+    type?: string;
 }
 
 interface SimpleParameter {
@@ -71,6 +72,7 @@ function getDoclets(reflection: typedoc.ContainerReflection): Array<typedoc.Decl
         // Register all the valid children in this reflection.
         doclets.push(...child.getChildrenByKind(ReflectionKind.FunctionOrMethod))
         doclets.push(...child.getChildrenByKind(ReflectionKind.Variable))
+        doclets.push(...child.getChildrenByKind(ReflectionKind.TypeAlias))
         // If this reflection has children, look for doclets in there as well.
         if("children" in child) {
             doclets.push(...getDoclets(child));
@@ -128,7 +130,7 @@ function constructRenderProps(doclets: typedoc.DeclarationReflection[]): RenderP
         name: reflection.name,
         slug: `${parentName}-${reflection.name}`.toLowerCase(),
         kind: reflection.kindString,
-        parent: parentName,
+        parent: parentName
     };
 
     if(reflection.kindOf(ReflectionKind.FunctionOrMethod)) {
@@ -167,10 +169,15 @@ function constructRenderProps(doclets: typedoc.DeclarationReflection[]): RenderP
             target.comment = "No description."
         }
 
+        if("type" in reflection) {
+            simpleReflection.type = reflection.type.toString();
+        }
+
         // If a @memberof tag was provided then it will overwrite the parent.
         if("comment" in source) {
             if(source.comment.hasTag("memberof")) {
-                target.parent = source.comment.getTag("memberof").text;
+                // The replace at the end gets rid of whitespace that tag texts can sometimes have.
+                target.parent = source.comment.getTag("memberof").text.replace(/\s+/g, '');
                 // Don't forget to update the slug as well.
                 target.slug = `${target.parent}-${target.name}`.toLowerCase();
             }

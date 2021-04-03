@@ -59,9 +59,10 @@ cli.addCommand("iam", (flags) => {
                 <section id="cli-section">
                     <h2>cli</h2>
                         <div class="doclet">
-                            <h3 id="cli-addcommand">Function - cli.addCommand</h3>
+                            <h3 id="cli-addcommand">Function - addCommand</h3>
 
                                 <p>Description: The addCommand function registers a new command to the command pool.</p>
+
 
                                 <p>Returns: A Command object to set additional information, eg. flags.</p>
 
@@ -73,20 +74,21 @@ cli.addCommand("iam", (flags) => {
                                     </tr>
                                         <tr>
                                             <td>path</td>
-                                            <td>string</td>
+                                            <td><code>string</code></td>
                                             <td>The command name. For nested commands, separate each name with a dot.</td>
                                         </tr>
                                         <tr>
                                             <td>callback</td>
-                                            <td>function</td>
+                                            <td><code>function</code></td>
                                             <td>The function that will be called when the command is used.</td>
                                         </tr>
                                 </table>
                         </div>
                         <div class="doclet">
-                            <h3 id="cli-question">Function - cli.question</h3>
+                            <h3 id="cli-question">Function - question</h3>
 
                                 <p>Description: Prompts the user for input. (stdin, stdout)</p>
+
 
                                 <p>Returns: A promise containing the answer as a string.</p>
 
@@ -98,15 +100,16 @@ cli.addCommand("iam", (flags) => {
                                     </tr>
                                         <tr>
                                             <td>message</td>
-                                            <td>string</td>
+                                            <td><code>string</code></td>
                                             <td>The message that comes before the user input.</td>
                                         </tr>
                                 </table>
                         </div>
                         <div class="doclet">
-                            <h3 id="cli-log">Function - cli.log</h3>
+                            <h3 id="cli-log">Function - log</h3>
 
                                 <p>Description: An alternative to console.log() with color styling capabilities.</p>
+
 
 
                                 <table>
@@ -117,7 +120,7 @@ cli.addCommand("iam", (flags) => {
                                     </tr>
                                         <tr>
                                             <td>args</td>
-                                            <td>string[]</td>
+                                            <td><code>string[]</code></td>
                                             <td>An array of strings to be written to stdout.
 </td>
                                         </tr>
@@ -127,9 +130,19 @@ cli.addCommand("iam", (flags) => {
                 <section id="command-section">
                     <h2>Command</h2>
                         <div class="doclet">
-                            <h3 id="command-addflag">Method - Command.addFlag</h3>
+                            <h3 id="command-flagtypenames">Type alias - FlagTypeNames</h3>
+
+                                <p>Description: The names of the types that a command flag can be.</p>
+
+                                <p>Type: <code>&quot;any&quot; | &quot;string&quot; | &quot;boolean&quot; | &quot;number&quot;</code></p>
+
+
+                        </div>
+                        <div class="doclet">
+                            <h3 id="command-addflag">Method - addFlag</h3>
 
                                 <p>Description: Registers a flag to a command.</p>
+
 
                                 <p>Returns: A command object for chaining.</p>
 
@@ -141,17 +154,17 @@ cli.addCommand("iam", (flags) => {
                                     </tr>
                                         <tr>
                                             <td>name</td>
-                                            <td>string</td>
+                                            <td><code>string</code></td>
                                             <td>The name of the flag.</td>
                                         </tr>
                                         <tr>
                                             <td>type</td>
-                                            <td>FlagTypeNames</td>
-                                            <td>The type of value this flag will accept. Any by default.</td>
+                                            <td><code>FlagTypeNames</code></td>
+                                            <td>The type of value this flag will accept. &quot;any&quot; by default.</td>
                                         </tr>
                                         <tr>
                                             <td>required</td>
-                                            <td>boolean</td>
+                                            <td><code>boolean</code></td>
                                             <td>Is this flag required or optional?</td>
                                         </tr>
                                 </table>
