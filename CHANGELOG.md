@@ -2,11 +2,19 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.0.0](https://github.com/thecodeah/quicli/compare/v0.5.0...v1.0.0)
+
+- chore: Added a documentation webpage generation script [`5af89b2`](https://github.com/thecodeah/quicli/commit/5af89b22ed61584a146693dc25799c5e1222e410)
+- breaking: Remove promptMenu since its not an absolute must. Renamed promptInput to question [`c8133c1`](https://github.com/thecodeah/quicli/commit/c8133c191249f221456d24b4c101451e8c558d88)
+- refactor: Put promptInput and promptMenu in their own files [`d7355cf`](https://github.com/thecodeah/quicli/commit/d7355cf881327d9badd0c663db44e678975a48ce)
+
 #### [v0.5.0](https://github.com/thecodeah/quicli/compare/v0.4.0...v0.5.0)
 
+> 22 March 2021
+
 - feat: cli.promptInput() [`64bdc14`](https://github.com/thecodeah/quicli/commit/64bdc14953d8bcdbbfe4d7db8ced8d99d56c5fbe)
+- 0.5.0 release! [`bf31fad`](https://github.com/thecodeah/quicli/commit/bf31fad41ce9ee13414ba1040470cc1b04c61e92)
 - docs: Added example usage of cli.promptInput() to README.md [`6c54a87`](https://github.com/thecodeah/quicli/commit/6c54a87a206f99f7c9d04bcfbf4f61753c49a677)
-- docs: Update Why QuiCLI section in README.md with better information [`0ae9cc3`](https://github.com/thecodeah/quicli/commit/0ae9cc3e127bfa5a83946c47e6acb9b0c28cf7d0)
 
 #### [v0.4.0](https://github.com/thecodeah/quicli/compare/v0.3.0...v0.4.0)
 
