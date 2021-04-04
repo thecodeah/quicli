@@ -43,7 +43,7 @@ class Command {
 
     /**
      * Registers a flag to a command.
-     * @param name The name of the flag.
+     * @param name The name of the flag. Use "*" to accept any flag.
      * @param type The type of value this flag will accept. "any" by default.
      * @param required Is this flag required or optional?
      * @returns A command object for chaining.
