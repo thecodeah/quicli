@@ -223,6 +223,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.3em;
+    width: max-content;
+}
+
+@media only screen and (max-width: 600px) {
+    .documentation section .doclet {
+        width: initial;
+    }
 }
 
 /* Highlight.js Styling */
