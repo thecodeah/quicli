@@ -6,13 +6,19 @@
 
 @font-face {
     font-family: Roboto;
+    src: url(Roboto-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Roboto;
     src: url(Roboto-Bold.ttf);
     font-weight: bold;
 }
 
 /* Variables */
 :root{
-    --horizontal-content-padding: 4vw;
+    --horizontal-content-padding: 5vw;
 }
 
 /* CSS Resets */
@@ -29,6 +35,8 @@ body {
     padding: 0;
     font-family: Roboto, Arial, Helvetica, sans-serif;
     color: #444;
+    background: rgba(56,124,200,1);
+    background: linear-gradient(90deg, rgba(100,83,158,1) 0%, rgba(56,124,200,1) 100%);
 }
 
 /* Header */
@@ -37,10 +45,9 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    padding: 1.15em var(--horizontal-content-padding);
+    padding: 2em var(--horizontal-content-padding) 0 var(--horizontal-content-padding);
 
-    background: #292929;
-    color: #fff;
+    color: #FFF;
 }
 
 header > img.logo {
@@ -68,26 +75,17 @@ header a {
     justify-content: space-between;
     gap: 1em;
 
-    padding: 2em var(--horizontal-content-padding);
+    padding: 3.5em var(--horizontal-content-padding);
     
-    background-color: #4A6BB7;
     color: #fff;
     
     font-size: 1.15em;
-}
-
-@media only screen and (max-width: 1200px) {
-    .sub-header {
-        display: none;
-    }
 }
 
 .sub-header > .promo {
     display: flex;
     flex-direction: column;
     gap: 1em;
-
-    width: 30%;
 }
 
 .sub-header > .promo button {
@@ -113,7 +111,8 @@ header a {
     min-height: 18em;
     padding: 1em;
     box-sizing: border-box;
-    background-color: #424242;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
 }
 
@@ -121,35 +120,35 @@ header a {
     overflow: hidden;
 }
 
-.code-window .buttons {
+.code-window .window-buttons {
     display: flex;
-    gap: 0.3em;
+    gap: 0.35em;
 }
 
-.code-window .buttons > .button {
-    height: 0.7em;
-    width: 0.7em;
+.code-window .window-buttons > .window-button {
+    height: 0.6em;
+    width: 0.6em;
     border-radius: 100%;
     background-color: #f5f5f5;
     cursor: pointer;
 }
 
-.code-window .buttons > .button.button-red {
+.code-window .window-buttons > .window-button.window-button-red {
     background-color: #E86060;
 }
 
-.code-window .buttons > .button.button-yellow {
+.code-window .window-buttons > .window-button.window-button-yellow {
     background-color: #E8D260;
 }
 
-.code-window .buttons > .button.button-green {
+.code-window .window-buttons > .window-button.window-button-green {
     background-color: #60E86D;
 }
 
 /* Content Navigation Sidebar */
 .section-nav {
     overflow: hidden;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    width: 10em;
 }
 
 .section-nav h3 {
@@ -169,43 +168,29 @@ header a {
 
 /* Documentation and Navbar */
 main {
-    display: grid;
-    grid-template-columns: 10em auto;
+    display: flex;
     gap: 1.5em;
 
-    padding: 0 var(--horizontal-content-padding);
-    margin: 2.5em 0;
-}
+    padding: 2.5em var(--horizontal-content-padding);
 
-@media only screen and (max-width: 600px) {
-    main {
-        grid-template-columns: 0% auto;
-    }
+    background-color: #FFF;
+    box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
 }
 
 /* Documentation */
 .documentation {
+    flex-grow: 1;
     display: grid;
     gap: 1em;
 }
 
 .documentation h1, h2 {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     padding-bottom: 0.25em;
 }
 
-.documentation table {
-    border-collapse: collapse;
-}
-
-.documentation table, th, td {
-    padding: 0.25em 0.5em;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.documentation th {
-    background: rgba(0, 0, 0, 0.10);
-    font-weight: normal;
+.documentation h3 {
+    font-weight: 500;
 }
 
 .documentation code {
@@ -226,11 +211,40 @@ main {
     width: max-content;
 }
 
-@media only screen and (max-width: 600px) {
-    .documentation section .doclet {
-        width: initial;
-    }
+/* Tables */
+
+.documentation table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0.3em 0;
+    
+    color:rgba(0, 0, 0, 0.75);
 }
+
+.documentation th, td {
+    padding: 0.25em 0.5em;
+}
+
+.documentation th {
+    font-weight: normal;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+    background-color:rgba(0, 0, 0, 0.04);
+}
+
+.documentation td {
+    background-color:rgba(0, 0, 0, 0.015);
+}
+
+.documentation tr > td:first-child, th:first-child { border-left: 1px solid rgba(0, 0, 0, 0.15); }
+.documentation tr > td:last-child, th:last-child { border-right: 1px solid rgba(0, 0, 0, 0.15); }
+.documentation tr:first-child > th { border-top: 1px solid rgba(0, 0, 0, 0.15); }
+.documentation tr:last-child > td { border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
+
+.documentation tr:first-child > th:first-child { border-top-left-radius: 4px; }
+.documentation tr:first-child > th:last-child { border-top-right-radius: 4px; }
+.documentation tr:last-child > td:first-child { border-bottom-left-radius: 4px; }
+.documentation tr:last-child > td:last-child { border-bottom-right-radius: 4px; }
 
 /* Highlight.js Styling */
 .hljs-comment {
@@ -247,4 +261,28 @@ main {
 
 .hljs-literal {
     color: #FF7B7B;
+}
+
+/* Responsive */
+
+@media only screen and (min-width: 1200px) {
+    .sub-header > .promo {
+        width: 30%
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .code-window {
+        display: none;
+    }
+
+    .documentation section .doclet {
+        width: initial;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .section-nav {
+        display: none;
+    }
 }
