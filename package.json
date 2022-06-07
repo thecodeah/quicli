@@ -26,7 +26,7 @@
     "auto-changelog": "^2.2.1",
     "handlebars": "^4.7.7",
     "minify": "^7.0.1",
-    "simple-git": "^2.36.2",
+    "simple-git": "^3.5.0",
     "typedoc": "^0.20.34",
     "typescript": "^4.2.3"
   }
