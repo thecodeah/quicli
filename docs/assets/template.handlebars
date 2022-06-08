@@ -3,10 +3,16 @@
 <head>
     <meta charset='utf-8'/>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-    <title>QuiCLI - Create CLI’s quickly without any external files!</title>
     <meta name='viewport' content='width=device-width, initial-scale=0.75'/>
+
+    <title>QuiCLI - Create CLI’s quickly without any external files!</title>
+
     <link rel='stylesheet' type='text/css' media='screen' href='assets/main.css'/>
     <link rel="icon" type="image/png" href="assets/favicon.png"/>
+
+    <script src="https://confettijs.org/confetti.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js" defer></script>
+    <script src="assets/main.js"></script>
 </head>
 <body>
     <header>
@@ -26,7 +32,7 @@
                 Javascript file and you’re ready to go! A perfect cross-platform alternative to shell scripts 
                 in development environments!
             </p>
-            <button><a href="https://raw.githubusercontent.com/thecodeah/quicli/master/lib/quicli.min.js">Go to code!</a></button>
+            <button id="copy-to-clipboard">Copy to clipboard!</button>
         </div>
         <div class="code-window">
             <div class="window-buttons">
@@ -103,8 +109,5 @@ cli.addCommand("iam", (flags) => {
             {{/each}}
         </div>
     </main>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
 </body>
 </html>

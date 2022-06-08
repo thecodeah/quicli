@@ -88,7 +88,7 @@ header a {
     gap: 1em;
 }
 
-.sub-header > .promo button {
+.sub-header > .promo > #copy-to-clipboard {
     width: max-content;
     padding: 0.5em 1em;
     
@@ -99,11 +99,12 @@ header a {
     border-radius: 3px;
     
     font-weight: bold;
+
+    cursor: pointer;
 }
 
-.sub-header > .promo a {
-    color: inherit;
-    text-decoration: none;
+.sub-header > .promo > #copy-to-clipboard:active {
+    transform: scale(1.05);
 }
 
 .code-window {
