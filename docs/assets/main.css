@@ -189,7 +189,7 @@ main {
 }
 
 .documentation h1, h2 {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: thin solid rgba(0, 0, 0, 0.15);
     padding-bottom: 0.25em;
 }
 
@@ -231,7 +231,7 @@ main {
 
 .documentation th {
     font-weight: normal;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: thin solid rgba(0, 0, 0, 0.15);
 
     background-color:rgba(0, 0, 0, 0.04);
 }
@@ -240,10 +240,10 @@ main {
     background-color:rgba(0, 0, 0, 0.015);
 }
 
-.documentation tr > td:first-child, th:first-child { border-left: 1px solid rgba(0, 0, 0, 0.15); }
-.documentation tr > td:last-child, th:last-child { border-right: 1px solid rgba(0, 0, 0, 0.15); }
-.documentation tr:first-child > th { border-top: 1px solid rgba(0, 0, 0, 0.15); }
-.documentation tr:last-child > td { border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
+.documentation tr > td:first-child, th:first-child { border-left: thin solid rgba(0, 0, 0, 0.15); }
+.documentation tr > td:last-child, th:last-child { border-right: thin solid rgba(0, 0, 0, 0.15); }
+.documentation tr:first-child > th { border-top: thin solid rgba(0, 0, 0, 0.15); }
+.documentation tr:last-child > td { border-bottom: thin solid rgba(0, 0, 0, 0.15); }
 
 .documentation tr:first-child > th:first-child { border-top-left-radius: 4px; }
 .documentation tr:first-child > th:last-child { border-top-right-radius: 4px; }
