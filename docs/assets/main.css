@@ -175,7 +175,7 @@ main {
     padding: 2.5em var(--horizontal-content-padding);
 
     background-color: #FFF;
-    box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
+    box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px 0px 0px 0px transparent;
 }
 
 /* Documentation */
