@@ -15,31 +15,32 @@
     <script src="assets/main.js"></script>
 </head>
 <body>
-    <header>
-        <img alt="Logo" class="logo" src="assets/logo.svg"/>
-        <nav>
-            <ul>
-                <a href="/"><li><b>Documentation</b></li></a>
-                <a href="https://github.com/thecodeah/quicli"><li>Github</li></a>
-            </ul>
-        </nav>
-    </header>
-    <div class="sub-header">
-        <div class="promo">
-            <h1>Create CLI’s quickly without any external files!</h1>
-            <p>
-                The entire codebase is minified into a single line, copy and paste it at the top of a new 
-                Javascript file and you’re ready to go! A perfect cross-platform alternative to shell scripts 
-                in development environments!
-            </p>
-            <button id="copy-to-clipboard">Copy to clipboard!</button>
-        </div>
-        <div class="code-window">
-            <div class="window-buttons">
-                <div class="window-button window-button-red"></div>
-                <div class="window-button window-button-yellow"></div>
-                <div class="window-button window-button-green"></div>
+    <div id="headers">
+        <header>
+            <img alt="Logo" class="logo" src="assets/logo.svg"/>
+            <nav>
+                <ul>
+                    <a href="/"><li><b>Documentation</b></li></a>
+                    <a href="https://github.com/thecodeah/quicli"><li>Github</li></a>
+                </ul>
+            </nav>
+        </header>
+        <div class="sub-header">
+            <div class="promo">
+                <h1>Create CLI’s quickly without any external files!</h1>
+                <p>
+                    The entire codebase is minified into a single line, copy and paste it at the top of a new 
+                    Javascript file and you’re ready to go! A perfect cross-platform alternative to shell scripts 
+                    in development environments!
+                </p>
+                <button id="copy-to-clipboard">Copy to clipboard!</button>
             </div>
+            <div class="code-window">
+                <div class="window-buttons">
+                    <div class="window-button window-button-red"></div>
+                    <div class="window-button window-button-yellow"></div>
+                    <div class="window-button window-button-green"></div>
+                </div>
 <pre><code>/* Using QuiCLI v{{version}}                                                                                                        */
 
 cli.addCommand("iam", (flags) => {
@@ -51,6 +52,7 @@ cli.addCommand("iam", (flags) => {
 // Example input: node myapp iam --name John --age 26
 // Example output: I’m John, I’m 26 years old!
 </code></pre>
+            </div>
         </div>
     </div>
     <main>
